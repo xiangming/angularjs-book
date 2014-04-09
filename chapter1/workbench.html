@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<meta charset="utf-8">
+	<title>do it yourself</title>
+</head>
+<body>
+
+<div ng-controller="sayHello">
+<input type="text" ng-model="name.text">
+{{name.text}}, Hello!
+</div>
+
+<h3>个人总结：</h3>
+<p>ng-app：指定angularjs管理的区域，没有限定位置；
+当使用纯angular开发应用时（其他管理DOM的方式还有java或Rails），应该把ng-app指定在html标签上。</p>
+<p>ng-controller：指定javascript控制器管理的区域</p>
+<p>ng-model：设置一个双向绑定的数据</p>
+<p>双括号{{}}：设置一个单向引用的数据；花括号插值语法。</p>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<script type="text/javascript">
+	function sayHello($scope){
+		$scope.name = {text:'jason'};
+	}
+</script>
+</body>
+</html>
