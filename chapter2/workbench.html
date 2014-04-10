@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<meta charset="utf-8">
+	<title>diy</title>
+</head>
+<body>
+	<div ng-controller="demo">{{demo}}</div>
+
+	<div ng-controller="calculate">
+		input:<input ng-model="calc.in" ng-c hange="startCalc()">
+		output:{{calc.out}}
+	</div>
+
+	<div ng-controller="calculate2">
+		input:<input ng-model="calc.in">
+		output:{{calc.out}}
+	</div>
+
+	<form ng-controller="calculate3" ng-submit="startCalc()">
+		input:<input ng-mode="calc.in">
+		output:{{calc.out}}
+		<button>Submit</button>
+		<button ng-click="reset()">Reset</button>
+	</form>
+
+<h1>笔记：</h1>
+<p>不要将控制器暴露在全局环境下，因此才需要自定义模块，使用模块来加载控制器。P14</p>
+<p>ng-bing也可以单向引用一个数据，与花括号的区别：1.花括号书写更直观便捷；2.花括号在angular加载之前可能被用户看到，而ng-bing不会。P16</p>
+<p>将ng-mode绑定到一个checkbox时，勾选对应$scope中的true，不勾选对应false，双向绑定同样生效。P17</p>
+<p>如果你需要根据用户事件来触发某些操作，ng-click, ng-change和ng-submit都是常用的指令，指向的函数需要申明到$scope名下，否则angular无法去触发它。P17~P19</p>
+<p>控制器中函数的监控有两种形式，一种是直接申明到$scope名下，一种是通过$watch来建立监控。P18</p>
+<p>ng-repeat是最有用的一个指令，它会复制自身和自身包含的内容，而$index保存着当前索引。类似的还有$first/$middle/$last等</p>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	<script type="text/javascript">
+		//创建一个模块
+		var module1 = angular.module('myapp',[]);
+
+		//为模块创建一个控制器
+		module1.controller('demo', function($scope){
+			$scope.demo = 'some text here with module';
+		});
+		
+		//通过ng-change来绑定事件
+		module1.controller('calculate', function($scope){
+			$scope.calc = {in:1};
+
+			$scope.startCalc = function(){
+				$scope.calc.out = $scope.calc.in * 10;
+			}
+		})
+
+		//通过$watch来绑定事件
+		module1.controller('calculate2',  function($scope){
+			$scope.calc = {in:2};
+
+			function startCalc(){
+				$scope.calc.out = $scope.calc.in * 10;
+			}
+
+			$scope.$watch('calc.in', startCalc);
+		})
+
+		//通过ng-submit来绑定事件
+		module1.controller('calculate3', function($scope){
+			$scope.calc = {in:3};
+
+			$scope.startCalc = function(){
+				$scope.calc.out = $scope.calc.in * 10;
+			}
+
+			$scope.reset = function(){
+				$scope.calc.in = 0;
+			}
+		})
+	</script>
+</body>
+</html>
