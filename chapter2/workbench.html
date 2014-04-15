@@ -8,7 +8,7 @@
 	<div ng-controller="demo">{{demo}}</div>
 
 	<div ng-controller="calculate">
-		input:<input ng-model="calc.in" ng-c hange="startCalc()">
+		input:<input ng-model="calc.in" ng-change="startCalc()">
 		output:{{calc.out}}
 	</div>
 
@@ -30,7 +30,7 @@
 <p>将ng-mode绑定到一个checkbox时，勾选对应$scope中的true，不勾选对应false，双向绑定同样生效。P17</p>
 <p>如果你需要根据用户事件来触发某些操作，ng-click, ng-change和ng-submit都是常用的指令，指向的函数需要申明到$scope名下，否则angular无法去触发它。P17~P19</p>
 <p>控制器中函数的监控有两种形式，一种是直接申明到$scope名下，一种是通过$watch来建立监控。P18</p>
-<p>ng-repeat是最有用的一个指令，它会复制自身和自身包含的内容，而$index保存着当前索引。类似的还有$first/$middle/$last等</p>
+<p>ng-repeat指令会复制自身和自身包含的内容，而$index保存着当前索引，类似的还有$first/$middle/$last等</p>
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>

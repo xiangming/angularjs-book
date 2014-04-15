@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app>
   <head>
+    <meta charset="utf8">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
     <style type="text/css">
     .error {
@@ -20,6 +21,10 @@
       <button ng-click='showError()'>Simulate Error</button>
       <button ng-click='showWarning()'>Simulate Warning</button>
     </div>
+
+    <h1>笔记</h1>
+    <p>ng-class="{A:a, B:b}"的意思：当a为true时，添加一个样式A；当b为true时，添加一个样式B。</p>
+
     <script>
       function HeaderController($scope) {
         $scope.isError = false;

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<meta charset="utf8">
+	<title>ng-show & ng-hide</title>
+</head>
+<body>
+
+	<div ng-controller="menu">
+		<button ng-click="toggleMenu()">toggle menu</button>
+		<ul ng-show="state.show">
+			<li>menu item</li>
+		</ul>
+	</div>
+
+<h1>笔记</h1>
+<p>这个例子里面，直接使用布尔值false来给state.show赋值，发现无法成功隐藏menu；修改成对象来赋值，就可以了。</p>
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	<script type="text/javascript">
+		function menu($scope){
+			$scope.state = {show:false};
+
+			$scope.toggleMenu = function(){
+				$scope.state.show = !$scope.state.show;
+			}
+		}
+	</script>
+
+</body>
+</html>
